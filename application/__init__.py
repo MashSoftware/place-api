@@ -19,4 +19,3 @@ cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 db = SQLAlchemy(app)
 
 import application.views
-import application.models

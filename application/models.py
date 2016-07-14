@@ -1,5 +1,6 @@
 from application import db
 from geoalchemy2 import Geometry
+import json
 
 
 class Constituency(db.Model):
@@ -24,3 +25,6 @@ class Constituency(db.Model):
     def __init__(self, arg):
         super(Constituency, self).__init__()
         self.arg = arg
+
+    def __repr__(self):
+        return json.dumps({"id": self.gid, "name": self.name})
