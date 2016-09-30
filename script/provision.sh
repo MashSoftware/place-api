@@ -9,7 +9,7 @@ sudo apt-get install wget ca-certificates
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo apt-get update
 sudo apt-get -y upgrade
-sudo apt-get install -y postgresql-9.5-postgis-2.2 pgadmin3 postgresql-contrib postgis libpq-dev python-dev
+sudo apt-get install -y postgresql-9.6-postgis-2.3 pgadmin3 postgresql-contrib postgis libpq-dev python-dev
 
 echo 'Installing Pip...'
 apt-get -y install python-pip
@@ -22,6 +22,5 @@ pip install -r /vagrant/requirements.txt
 
 echo 'Tidying up...'
 apt-get autoclean
-apt-get autoremove
-
+apt-get -y autoremove
 echo 'Done!'

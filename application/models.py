@@ -7,7 +7,7 @@ class Constituency(db.Model):
     gid = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60))
     area_code = db.Column(db.String(3))
-    description = db.Column(db.String(50))
+    descriptio = db.Column(db.String(50))
     file_name = db.Column(db.String(50))
     number = db.Column(db.Float(precision=8))
     number0 = db.Column(db.Float(precision=8))
@@ -27,4 +27,4 @@ class Constituency(db.Model):
         self.arg = arg
 
     def __repr__(self):
-        return json.dumps({"id": self.gid, "name": self.name})
+        return json.dumps({"id": self.gid, "name": self.name}, sort_keys=True, indent=2)
