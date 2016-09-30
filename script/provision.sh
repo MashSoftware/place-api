@@ -19,6 +19,7 @@ pip install -U pip
 
 echo 'Installing requirements...'
 pip install -r /vagrant/requirements.txt
+pip install -r /vagrant/requirements_test.txt
 
 echo 'Tidying up...'
 apt-get autoclean
