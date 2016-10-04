@@ -4,7 +4,7 @@ Geographic data API
 ## Getting Started
 
 ```
-export FLASK_APP=application/__init__.py
+export FLASK_APP=mash_geo_api/__init__.py
 export FLASK_DEBUG=1
 ```
 
@@ -38,7 +38,7 @@ The `shp2pgsql` utility is set to import data in the British National Grid (BNG)
 ## Running
 
 ```
-flask run
+flask run --host=0.0.0.0
 ```
 
 ## Usage

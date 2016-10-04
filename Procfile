@@ -1,1 +1,1 @@
-web: gunicorn application:app --log-file - 
+web: gunicorn mash_geo_api:app --log-file - 

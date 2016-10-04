@@ -1,4 +1,4 @@
-from application import db
+from mash_geo_api import db
 from geoalchemy2 import Geometry
 import json
 

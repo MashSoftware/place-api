@@ -9,13 +9,15 @@ app = Flask(__name__)
 #App config
 app.config.from_pyfile('config.py')
 
+#SQL Alchemy
+db = SQLAlchemy(app)
+
 # Flask Compress
 Compress(app)
 
 # Flask Cache
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
-#SQL Alchemy
-db = SQLAlchemy(app)
-
-import application.views
+#Register blueprints
+from mash_geo_api.views import constituencies
+app.register_blueprint(constituencies.constituencies_bp, url_prefix='/constituencies')

@@ -24,4 +24,5 @@ pip install -r /vagrant/requirements_test.txt
 echo 'Tidying up...'
 apt-get autoclean
 apt-get -y autoremove
+
 echo 'Done!'
