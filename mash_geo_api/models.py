@@ -27,4 +27,22 @@ class Constituency(db.Model):
         self.arg = arg
 
     def __repr__(self):
-        return json.dumps({"id": self.gid, "name": self.name}, sort_keys=True, indent=2)
+        return json.dumps(
+            {"gid": self.gid,
+             "name": self.name,
+             "area_code": self.area_code,
+             "description": self.descriptio,
+             "file_name": self.file_name,
+             "number": self.number,
+             "number0": self.number0,
+             "polygon_id": self.polygon_id,
+             "unit_id": self.unit_id,
+             "code": self.code,
+             "hectares": self.hectares,
+             "area": self.area,
+             "type_code": self.type_code,
+             "description0": self.descript0,
+             "type_code0": self.type_cod0,
+             "description1": self.descript1},
+            sort_keys=True, indent=2
+        )
