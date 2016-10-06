@@ -1,5 +1,5 @@
-# Geo API
-Geographic data API
+# Mash Geo API
+[![Build Status](https://travis-ci.org/MashSoftware/geo-api.svg?branch=develop)](https://travis-ci.org/MashSoftware/geo-api)
 
 ## Getting Started
 
