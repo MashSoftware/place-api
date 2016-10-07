@@ -1,5 +1,7 @@
 from mash_geo_api import db
 from geoalchemy2 import Geometry
+from geoalchemy2.shape import to_shape
+from shapely.geometry import mapping
 import json
 
 
@@ -20,7 +22,7 @@ class Constituency(db.Model):
     descript0 = db.Column(db.String(25))
     type_cod0 = db.Column(db.String(3))
     descript1 = db.Column(db.String(36))
-    geom = db.Column(Geometry('MULTIPOLYGON'))
+    geom = db.Column(Geometry('MULTIPOLYGON', srid=27700))
 
     def __init__(self, arg):
         super(Constituency, self).__init__()
@@ -43,6 +45,5 @@ class Constituency(db.Model):
              "type_code": self.type_code,
              "description_0": self.descript0,
              "type_code_0": self.type_cod0,
-             "description_1": self.descript1},
-            sort_keys=True, indent=2
-        )
+             "description_1": self.descript1,
+             "geometry": mapping(to_shape(self.geom))})
