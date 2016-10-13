@@ -43,6 +43,23 @@ flask run --host=0.0.0.0
 
 ## Usage
 
-`GET /constituencies` Returns a list of constituencies
+`GET /constituencies/<ons_code>` Returns a specific Westminster Constituency:
 
-`GET /constituencies/<id>` Returns a specific constituency
+```
+{
+  ons_code: "E14000880",
+  crs: {
+    properties: {
+      name: "urn:ogc:def:crs:EPSG::27700"
+    },
+    type: "name"
+  },
+  geometry: {
+    coordinates: [...],
+    type: "MultiPolygon"
+  },
+  hectares: 2261.036,
+  name: "Plymouth, Sutton and Devonport Boro Const",
+  type: "Westminster Constituency"
+}
+```
