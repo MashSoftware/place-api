@@ -4,24 +4,26 @@ from geoalchemy2.shape import to_shape
 from shapely.geometry import mapping
 import json
 
+crs = {"type": "name", "properties": {"name": "urn:ogc:def:crs:EPSG::27700"}}
+
 
 class Constituency(db.Model):
     gid = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(60))
-    area_code = db.Column(db.String(3))
-    descriptio = db.Column(db.String(50))
-    file_name = db.Column(db.String(50))
-    number = db.Column(db.Float(precision=8))
-    number0 = db.Column(db.Float(precision=8))
-    polygon_id = db.Column(db.Float(precision=8))
-    unit_id = db.Column(db.Float(precision=8))
-    code = db.Column(db.String(9))
-    hectares = db.Column(db.Float(precision=8))
-    area = db.Column(db.Float(precision=8))
-    type_code = db.Column(db.String(2))
-    descript0 = db.Column(db.String(25))
-    type_cod0 = db.Column(db.String(3))
-    descript1 = db.Column(db.String(36))
+    name = db.Column(db.String(60))  # The name of the boundary.
+    area_code = db.Column(db.String(3))  # Code depicting the type of boundary.
+    descriptio = db.Column(db.String(50))  # Description of the area_code value.
+    file_name = db.Column(db.String(50))  # Name of principle area.
+    number = db.Column(db.Float(precision=8))  # Data identifier linked to OS production systems.
+    number0 = db.Column(db.Float(precision=8))  # Collection serial number linked to OS production systems.
+    polygon_id = db.Column(db.Float(precision=8))  # Global polygon identifier, of use with international boundaries.
+    unit_id = db.Column(db.Float(precision=8))  # ID of the admin unit boundary.
+    code = db.Column(db.String(9))  # Census code for the given boundary.
+    hectares = db.Column(db.Float(precision=8))  # Area in hectares of the boundary.
+    area = db.Column(db.Float(precision=8))  # Amount of area which is not considered "in-land".
+    type_code = db.Column(db.String(2))  # Code of either VA (Civil Voting Area) or CA (Civil Administration Area).
+    descript0 = db.Column(db.String(25))  # Textual description of type_code.
+    type_cod0 = db.Column(db.String(3))  # Non-area type code (not currently populated).
+    descript1 = db.Column(db.String(36))  # Description of non-area type code (not currently populated).
     geom = db.Column(Geometry('MULTIPOLYGON', srid=27700))
 
     def __init__(self, arg):
@@ -35,8 +37,6 @@ class Constituency(db.Model):
              "area_code": self.area_code,
              "description": self.descriptio,
              "file_name": self.file_name,
-             "number": self.number,
-             "number_0": self.number0,
              "polygon_id": self.polygon_id,
              "unit_id": self.unit_id,
              "code": self.code,
@@ -44,6 +44,6 @@ class Constituency(db.Model):
              "area": self.area,
              "type_code": self.type_code,
              "description_0": self.descript0,
-             "type_code_0": self.type_cod0,
-             "description_1": self.descript1,
-             "geometry": mapping(to_shape(self.geom))})
+             "geometry": mapping(to_shape(self.geom)),
+             "crs": crs},
+            sort_keys=True)
