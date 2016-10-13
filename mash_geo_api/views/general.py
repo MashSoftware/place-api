@@ -8,4 +8,4 @@ general_bp = Blueprint('general', __name__)
 def check_status():
     return Response(response=json.dumps({
         "status": "OK"
-    }, indent=2), mimetype='application/json', status=200)
+    }), mimetype='application/json', status=200)
