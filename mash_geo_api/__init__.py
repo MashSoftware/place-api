@@ -19,5 +19,6 @@ Compress(app)
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 #Register blueprints
-from mash_geo_api.views import constituencies
+from mash_geo_api.views import general, constituencies
+app.register_blueprint(general.general_bp)
 app.register_blueprint(constituencies.constituencies_bp, url_prefix='/constituencies')
