@@ -4,7 +4,7 @@ from geoalchemy2.shape import to_shape
 from shapely.geometry import mapping
 import json
 
-crs = {"type": "name", "properties": {"name": "urn:ogc:def:crs:EPSG::27700"}}
+crs = {"type": "name", "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}}
 
 
 class Constituency(db.Model):
@@ -24,7 +24,7 @@ class Constituency(db.Model):
     descript0 = db.Column(db.String(25))  # Textual description of type_code.
     type_cod0 = db.Column(db.String(3))  # Non-area type code (not currently populated).
     descript1 = db.Column(db.String(36))  # Description of non-area type code (not currently populated).
-    geom = db.Column(Geometry('MULTIPOLYGON', srid=27700))  # Geometry of the boundary.
+    geom = db.Column(Geometry('MULTIPOLYGON', srid=4326))  # Geometry of the boundary.
 
     def __init__(self):
         super(Constituency, self).__init__()

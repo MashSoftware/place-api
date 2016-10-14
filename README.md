@@ -33,7 +33,7 @@ cd /vagrant
 ./script/load.sh
 ```
 
-The `shp2pgsql` utility is set to import data in the British National Grid (BNG) coordinate reference system (SRID:27700), for example [Ordnance Survey OpenData](https://www.ordnancesurvey.co.uk/business-and-government/products/opendata-products-grid.html) products.
+Geometries will be reprojected from the OSGB 1936 / British National Grid (BNG) coordinate reference system (SRID/EPSG: 27700) to WGS84 (SRID/EPSG: 4326), for greater compatibility with GIS products and web mapping libraries. Source data can be obtained from [Ordnance Survey OpenData](https://www.ordnancesurvey.co.uk/business-and-government/products/opendata-products-grid.html) products.
 
 ## Running
 
@@ -48,18 +48,18 @@ flask run --host=0.0.0.0
 ```
 {
   ons_code: "E14000880",
+  name: "Plymouth, Sutton and Devonport Boro Const",
+  type: "Westminster Constituency",
+  hectares: 2261.036,
   crs: {
     properties: {
-      name: "urn:ogc:def:crs:EPSG::27700"
+      name: "urn:ogc:def:crs:OGC:1.3:CRS84"
     },
     type: "name"
   },
   geometry: {
     coordinates: [...],
     type: "MultiPolygon"
-  },
-  hectares: 2261.036,
-  name: "Plymouth, Sutton and Devonport Boro Const",
-  type: "Westminster Constituency"
+  }
 }
 ```

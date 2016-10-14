@@ -12,8 +12,8 @@ def constituencies():
     return Response(repr(constituencies), mimetype='application/json', status=200)
 
 
-@constituencies_bp.route('/<id>', methods=["GET"])
+@constituencies_bp.route('/<ons_code>', methods=["GET"])
 @cache.memoize(timeout=86400)
-def constituency(id):
-    constituency = Constituency.query.get(id)
+def constituency(ons_code):
+    constituency = Constituency.query.get(ons_code)
     return Response(repr(constituency), mimetype='application/json', status=200)
