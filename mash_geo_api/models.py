@@ -4,8 +4,6 @@ from geoalchemy2.shape import to_shape
 from shapely.geometry import mapping
 import json
 
-crs = {"type": "name", "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}}
-
 
 class Constituency(db.Model):
     gid = db.Column(db.Integer)  # Unique ID from DB sequence.
@@ -30,9 +28,11 @@ class Constituency(db.Model):
         super(Constituency, self).__init__()
 
     def __repr__(self):
-        return json.dumps({"ons_code": self.code,
-                           "name": self.name,
-                           "type": self.descriptio,
-                           "hectares": self.hectares,
-                           "crs": crs,
+        return json.dumps({"type": "Feature",
+                           "properties": {"ons_code": self.code,
+                                          "name": self.name,
+                                          "type": self.descriptio,
+                                          "hectares": self.hectares},
+                           "crs": {"type": "name",
+                                   "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}},
                            "geometry": mapping(to_shape(self.geom))})
