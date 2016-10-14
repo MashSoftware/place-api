@@ -43,14 +43,17 @@ flask run --host=0.0.0.0
 
 ## Usage
 
-`GET /constituencies/<ons_code>` Returns a specific Westminster Constituency:
+`GET /constituencies/<ons_code>` Returns a specific Westminster Constituency as GeoJSON feature:
 
 ```
 {
-  ons_code: "E14000880",
-  name: "Plymouth, Sutton and Devonport Boro Const",
-  type: "Westminster Constituency",
-  hectares: 2261.036,
+  type: "Feature",
+  properties: {
+    type: "Westminster Constituency",
+    name: "Plymouth, Sutton and Devonport Boro Const",
+    ons_code: "E14000880",
+    hectares: 2261.036
+  },
   crs: {
     type: "name",
     properties: {
