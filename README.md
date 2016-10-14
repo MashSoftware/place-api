@@ -52,14 +52,18 @@ flask run --host=0.0.0.0
   type: "Westminster Constituency",
   hectares: 2261.036,
   crs: {
+    type: "name",
     properties: {
       name: "urn:ogc:def:crs:OGC:1.3:CRS84"
-    },
-    type: "name"
+    }
   },
   geometry: {
-    coordinates: [...],
-    type: "MultiPolygon"
+    type: "MultiPolygon",
+    coordinates: [
+      [...],
+      [...],
+      [...]
+    ]
   }
 }
 ```
