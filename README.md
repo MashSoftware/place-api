@@ -4,23 +4,27 @@
 ## Getting Started
 
 ```
-export FLASK_APP=mash_geo_api/__init__.py
-export FLASK_DEBUG=1
+git clone git@github.com:MashSoftware/geo-api.git
+vagrant up
 ```
 
 ## Post-Installation
 
 ```
 vagrant ssh
+cd /vagrant
+export FLASK_APP=mash_geo_api/__init__.py
+export FLASK_DEBUG=1
 sudo su - postgres
 createuser -d -E -i -l -P -r -s vagrant
+```
+
+Enter password 'vagrant'
+
+```
 exit
 createdb
 psql -c "CREATE EXTENSION postgis;"
-psql -c "CREATE EXTENSION postgis_topology;"
-psql -c "CREATE EXTENSION fuzzystrmatch;"
-psql -c "CREATE EXTENSION address_standardizer;"
-
 ```
 
 ## Loading Data
@@ -43,7 +47,7 @@ flask run --host=0.0.0.0
 
 ## Usage
 
-`GET /constituencies/<ons_code>` Returns a specific Westminster Constituency as GeoJSON feature:
+`GET /constituencies/<ons_code>` Returns a specific Westminster Constituency as a GeoJSON feature:
 
 ```
 {
