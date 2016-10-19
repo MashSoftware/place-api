@@ -4,7 +4,7 @@ import json
 general_bp = Blueprint('general', __name__)
 
 
-@general_bp.route("/health")
+@general_bp.route("/health", methods=['GET'])
 def check_status():
     return Response(response=json.dumps({
         "status": "OK"

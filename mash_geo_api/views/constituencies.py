@@ -1,6 +1,7 @@
 from flask import Response, Blueprint
 from mash_geo_api import cache
 from mash_geo_api.models import Constituency
+import json
 
 constituencies_bp = Blueprint('constituencies', __name__)
 
@@ -9,13 +10,15 @@ constituencies_bp = Blueprint('constituencies', __name__)
 @cache.cached(timeout=86400)
 def constituencies():
     constituencies = Constituency.query.all()
-    return Response(repr(constituencies),
-                    mimetype='application/json',
-                    status=200)
+    results = []
+    for constituency in constituencies:
+        item = constituency.get_properties()
+        results.append(item)
+    return Response(json.dumps(results), mimetype='application/json', status=200)
 
 
 @constituencies_bp.route('/<ons_code>', methods=['GET'])
 @cache.memoize(timeout=86400)
 def constituency(ons_code):
     constituency = Constituency.query.get_or_404(ons_code)
-    return Response(repr(constituency), mimetype='application/json', status=200)
+    return Response(constituency.get_geojson(), mimetype='application/json', status=200)
