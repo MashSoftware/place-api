@@ -1,10 +1,10 @@
-# Mash Geo API
-[![Build Status](https://travis-ci.org/MashSoftware/geo-api.svg?branch=develop)](https://travis-ci.org/MashSoftware/geo-api)
+# Mash Place API
+[![Build Status](https://travis-ci.org/MashSoftware/place-api.svg?branch=develop)](https://travis-ci.org/MashSoftware/place-api)
 
 ## Getting Started
 
 ```
-git clone git@github.com:MashSoftware/geo-api.git
+git clone git@github.com:MashSoftware/place-api.git
 vagrant up
 ```
 
@@ -13,7 +13,7 @@ vagrant up
 ```
 vagrant ssh
 cd /vagrant
-export FLASK_APP=mash_geo_api/__init__.py
+export FLASK_APP=mash_place_api/__init__.py
 export FLASK_DEBUG=1
 sudo su - postgres
 createuser -d -E -i -l -P -r -s vagrant

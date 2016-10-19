@@ -1,6 +1,6 @@
 from flask import Response, Blueprint
-from mash_geo_api import cache
-from mash_geo_api.models import Constituency
+from mash_place_api import cache
+from mash_place_api.models import Constituency
 import json
 
 constituencies_bp = Blueprint('constituencies', __name__)

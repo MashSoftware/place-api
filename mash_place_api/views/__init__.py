@@ -1,4 +1,4 @@
-from mash_geo_api import app
+from mash_place_api import app
 from flask import Response
 import json
 

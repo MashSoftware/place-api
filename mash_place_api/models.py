@@ -1,4 +1,4 @@
-from mash_geo_api import db
+from mash_place_api import db
 from geoalchemy2 import Geometry
 from geoalchemy2.shape import to_shape
 from shapely.geometry import mapping
