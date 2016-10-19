@@ -30,7 +30,6 @@ class Constituency(db.Model):
     def get_properties(self):
         return {"ons_code": self.code,
                 "name": self.name,
-                "type": self.descriptio,
                 "hectares": self.hectares}
 
     def get_geojson(self):

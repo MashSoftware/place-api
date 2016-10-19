@@ -53,7 +53,6 @@ flask run --host=0.0.0.0
 {
   type: "Feature",
   properties: {
-    type: "Westminster Constituency",
     name: "Plymouth, Sutton and Devonport Boro Const",
     ons_code: "E14000880",
     hectares: 2261.036
