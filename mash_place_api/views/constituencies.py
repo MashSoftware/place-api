@@ -9,7 +9,7 @@ constituencies_bp = Blueprint('constituencies', __name__)
 @constituencies_bp.route('/', methods=['GET'])
 @cache.cached(timeout=86400)
 def constituencies():
-    constituencies = Constituency.query.all()
+    constituencies = Constituency.query.order_by(Constituency.name).all()
     results = []
     for constituency in constituencies:
         item = constituency.get_properties()
