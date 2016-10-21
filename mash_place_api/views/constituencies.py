@@ -8,7 +8,7 @@ constituencies_bp = Blueprint('constituencies', __name__)
 
 @constituencies_bp.route('/', methods=['GET'])
 @cache.cached(timeout=86400)
-def constituencies():
+def get_constituencies():
     constituencies = Constituency.query.order_by(Constituency.name).all()
     results = []
     for constituency in constituencies:
@@ -17,8 +17,8 @@ def constituencies():
     return Response(json.dumps(results), mimetype='application/json', status=200)
 
 
-@constituencies_bp.route('/<ons_code>', methods=['GET'])
+@constituencies_bp.route('/<string:ons_code>', methods=['GET'])
 @cache.memoize(timeout=86400)
-def constituency(ons_code):
+def get_constituency(ons_code):
     constituency = Constituency.query.get_or_404(ons_code)
     return Response(constituency.get_geojson(), mimetype='application/json', status=200)
