@@ -3,9 +3,10 @@ from geoalchemy2 import Geometry
 from geoalchemy2.shape import to_shape
 from shapely.geometry import mapping
 import json
+from datetime import date
 
 
-class Constituency(db.Model):
+class Boundary(object):
     gid = db.Column(db.Integer)  # Unique ID from DB sequence.
     name = db.Column(db.String(60))  # The name of the boundary.
     area_code = db.Column(db.String(3))  # Code depicting the type of boundary.
@@ -25,12 +26,19 @@ class Constituency(db.Model):
     geom = db.Column(Geometry('MULTIPOLYGON', srid=4326))  # Geometry of the boundary.
 
     def __init__(self):
-        super(Constituency, self).__init__()
+        super(Boundary, self).__init__()
+
+    def get_keyval(self):
+        return {"ons_code": self.code,
+                "name": self.name}
 
     def get_properties(self):
+        year = date.today().year
+
         return {"ons_code": self.code,
                 "name": self.name,
-                "hectares": self.hectares}
+                "hectares": self.hectares,
+                "attribution": "Contains OS data &copy; Crown copyright and database right (" + str(year) + ")"}
 
     def get_geojson(self):
         return json.dumps({"type": "Feature",
@@ -38,3 +46,11 @@ class Constituency(db.Model):
                            "crs": {"type": "name",
                                    "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}},
                            "geometry": mapping(to_shape(self.geom))})
+
+
+class Constituency(db.Model, Boundary):
+    __tablename__ = "westminster_const_region"
+
+
+class County(db.Model, Boundary):
+    __tablename__ = "county_region"

@@ -12,7 +12,7 @@ def get_constituencies():
     constituencies = Constituency.query.order_by(Constituency.name).all()
     results = []
     for constituency in constituencies:
-        item = constituency.get_properties()
+        item = constituency.get_keyval()
         results.append(item)
     return Response(json.dumps(results), mimetype='application/json', status=200)
 

@@ -10,6 +10,14 @@ routes = [{"url": "/constituencies",
           {"url": "/constituencies/<string:ons_code>",
            "methods": ["GET"],
            "description": "Westminster Constituency",
+           "collection": "Boundaries"},
+          {"url": "/counties",
+           "methods": ["GET"],
+           "description": "List of Counties",
+           "collection": "Boundaries"},
+          {"url": "/counties/<string:ons_code>",
+           "methods": ["GET"],
+           "description": "County",
            "collection": "Boundaries"}]
 
 

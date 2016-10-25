@@ -47,19 +47,17 @@ flask run --host=0.0.0.0
 
 ## Usage
 
-`GET /constituencies/` - Returns a list of Westminster Constituencies:
+`GET /constituencies` - Returns a list of Westminster Constituencies:
 
 ```
 [
   {
     ons_code: "W07000049",
-    name: "Aberavon Co Const",
-    hectares: 18655.396
+    name: "Aberavon Co Const"
   },
   {
     ons_code: "W07000058",
-    name: "Aberconwy Co Const",
-    hectares: 62272.587
+    name: "Aberconwy Co Const"
   },
   {...},
   {...}
@@ -74,7 +72,8 @@ flask run --host=0.0.0.0
   properties: {
     name: "Plymouth, Sutton and Devonport Boro Const",
     ons_code: "E14000880",
-    hectares: 2261.036
+    hectares: 2261.036,
+    attribution: "Contains OS data &copy; Crown copyright and database right (2016)",
   },
   crs: {
     type: "name",
