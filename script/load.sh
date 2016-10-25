@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+echo "--- STARTED LOADING ---"
 for f in /vagrant/data/*.shp
 do
   basename=$(basename $f)
@@ -11,3 +12,4 @@ do
   psql $DATABASE_URL -c "ALTER TABLE $filename ADD PRIMARY KEY (code);"
   echo "--- COMPLETED LOADING SHAPEFILE: $filename ---"
 done
+echo "--- FINISHED LOADING ---"
