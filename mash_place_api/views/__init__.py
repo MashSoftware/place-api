@@ -17,3 +17,11 @@ def method_not_allowed(error):
                                          "message": "Method Not Allowed"}),
                     mimetype='application/json',
                     status=405)
+
+
+@app.errorhandler(500)
+def internal_server_error(error):
+    return Response(response=json.dumps({"status_code": "500",
+                                         "message": "Internal Server Error"}),
+                    mimetype='application/json',
+                    status=500)
