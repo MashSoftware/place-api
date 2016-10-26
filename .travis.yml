@@ -11,7 +11,7 @@ deploy:
   api_key:
     secure: gmSRqEdiBwPeD+HrVBU5KkCWqUT1hFHDttXc6zkfRKhqZgDaKwSJd+EDxdnk7cZFvmfSEWXzYQiST/XIS7BSEkRPCU3amJd9ezq6do/PsWofejshM7Crq6bOXqb9EsPaW3YssRxJbAvK8hcrgonxuSjX9q+lfrXoEitm2XSA+JoquAsGYbcPLz+xczFaojUeo6OZc8YHMXfQ0+PZNo3wTEZbBmoCkCEHja63w2R8YkUmvsnksyMbnySJCcC+Nql7mOEdi1+QEB8yFrCqlPnzW3Uz4YqkRW5XCK34XGlXGWK+LXaf6BthHvwlajBU8dxFvJPAgF77qx+CIeP3gjjWoIuCgQlY6TtsSjIowjv2Uywc0OQPlxHXepvcYTCb4eCWykw4cPjf1xFlp+mi5XjcDjRqfNvzLR2vaJ9g6KGkhujFiD9EibqW4DblWn5vVps6sN657PP5gwqYGz1sHRVnYTLVKDlBlnGL1fV2m5dIKGdrX4q1E0ZYPvfodtc3RVPn71hkCcO4qG2Icb/DLV1KhvgjHZEKSEL22mXzS3rDEOFcS8/G1B1uba7Hxx9uc8MEMZ/+57LyRGsZcvLXMH9uLyr3jrg+B5M2z7EPGqTpT2pSjoixsKPLVSKljHeJmnt6WlS9/OS0lbTypmwFVXvrUKdzZzTORHxmt4F6naOwjn0=
   app:
-    develop: mash-place-api
+    master: mash-place-api
   on:
     repo: MashSoftware/place-api
 sudo: false

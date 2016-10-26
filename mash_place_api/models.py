@@ -37,6 +37,8 @@ class Boundary(object):
 
         return {"ons_code": self.code,
                 "name": self.name,
+                "description": self.descriptio,
+                "type": self.descript0.title(),
                 "hectares": self.hectares,
                 "attribution": "Contains OS data &copy; Crown copyright and database right (" + str(year) + ")"}
 
