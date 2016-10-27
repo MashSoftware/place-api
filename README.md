@@ -5,6 +5,7 @@
 
 ```
 git clone git@github.com:MashSoftware/place-api.git
+cd place-api
 vagrant up
 ```
 
@@ -70,10 +71,12 @@ flask run --host=0.0.0.0
 {
   type: "Feature",
   properties: {
-    name: "Plymouth, Sutton and Devonport Boro Const",
     ons_code: "E14000880",
+    name: "Plymouth, Sutton and Devonport Boro Const",
+    description: "Westminster Constituency",
+    type: "Civil Voting Area",
     hectares: 2261.036,
-    attribution: "Contains OS data &copy; Crown copyright and database right (2016)",
+    attribution: "Contains OS data &copy; Crown copyright and database right (2016)"
   },
   crs: {
     type: "name",
@@ -91,3 +94,6 @@ flask run --host=0.0.0.0
   }
 }
 ```
+
+## Mash Place UI
+There is an optional user interface available that consumes this API to help with discovering and visualising the data and also as an example of using web mapping tools: [https://github.com/MashSoftware/place-ui](https://github.com/MashSoftware/place-ui)
