@@ -45,6 +45,7 @@ Geometries will be reprojected from the OSGB 1936 / British National Grid (BNG) 
 ```
 flask run --host=0.0.0.0
 ```
+Go to [http://localhost:5000/](http://localhost:5000/)
 
 ## Usage
 
