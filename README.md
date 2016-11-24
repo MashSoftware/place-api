@@ -44,7 +44,7 @@ Tables will be created with the name of the shapefile input file. Geometries wil
 ## Running
 
 ```
-flask run --host=0.0.0.0
+python3 -m flask run --host=0.0.0.0
 ```
 Go to [http://localhost:5000/](http://localhost:5000/)
 
