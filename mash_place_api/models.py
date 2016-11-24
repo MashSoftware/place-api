@@ -1,8 +1,7 @@
 from mash_place_api import db
 from geoalchemy2 import Geometry
-from geoalchemy2.shape import to_shape
-from shapely.geometry import mapping
 import json
+import geoalchemy2.functions as geofunc
 from datetime import date
 
 
@@ -43,11 +42,13 @@ class Boundary(object):
                 "attribution": "Contains OS data &copy; Crown copyright and database right (" + str(year) + ")"}
 
     def get_geojson(self):
+        geom = json.loads(db.session.scalar(geofunc.ST_AsGeoJSON(self.geom)))
+
         return json.dumps({"type": "Feature",
                            "properties": self.get_properties(),
                            "crs": {"type": "name",
                                    "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}},
-                           "geometry": mapping(to_shape(self.geom))})
+                           "geometry": geom}, separators=(',', ':'))
 
 
 class Constituency(db.Model, Boundary):

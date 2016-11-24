@@ -6,7 +6,7 @@ import json
 @app.errorhandler(404)
 def not_found(error):
     return Response(response=json.dumps({"status_code": "404",
-                                         "message": "Not Found"}),
+                                         "message": "Not Found"}, separators=(',', ':')),
                     mimetype='application/json',
                     status=404)
 
@@ -14,7 +14,7 @@ def not_found(error):
 @app.errorhandler(405)
 def method_not_allowed(error):
     return Response(response=json.dumps({"status_code": "405",
-                                         "message": "Method Not Allowed"}),
+                                         "message": "Method Not Allowed"}, separators=(',', ':')),
                     mimetype='application/json',
                     status=405)
 
@@ -22,6 +22,6 @@ def method_not_allowed(error):
 @app.errorhandler(500)
 def internal_server_error(error):
     return Response(response=json.dumps({"status_code": "500",
-                                         "message": "Internal Server Error"}),
+                                         "message": "Internal Server Error"}, separators=(',', ':')),
                     mimetype='application/json',
                     status=500)

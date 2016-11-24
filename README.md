@@ -1,5 +1,6 @@
 # Mash Place API
 [![Build Status](https://travis-ci.org/MashSoftware/place-api.svg?branch=develop)](https://travis-ci.org/MashSoftware/place-api)
+[![Requirements Status](https://requires.io/github/MashSoftware/place-api/requirements.svg?branch=master)](https://requires.io/github/MashSoftware/place-api/requirements/?branch=master)
 
 ## Getting Started
 
@@ -49,7 +50,7 @@ Go to [http://localhost:5000/](http://localhost:5000/)
 
 ## Usage
 
-`GET /constituencies` - Returns a list of Westminster Constituencies:
+`GET /boundaries/constituencies` - Returns a list of Westminster Constituencies:
 
 ```
 [
@@ -66,7 +67,7 @@ Go to [http://localhost:5000/](http://localhost:5000/)
 ]
 ```
 
-`GET /constituencies/<ons_code>` - Returns a specific Westminster Constituency as a GeoJSON feature:
+`GET /boundaries/constituencies/<ons_code>` - Returns a specific Westminster Constituency as a GeoJSON feature:
 
 ```
 {
