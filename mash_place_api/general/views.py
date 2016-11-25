@@ -1,11 +1,7 @@
-from flask import Response, Blueprint
+from flask import Response, Blueprint, request
 import json
 
 general_bp = Blueprint('general', __name__)
-
-routes = [{"url": "/boundaries",
-           "methods": ["GET"],
-           "description": "Administrative areas in England, Scotland and Wales."}]
 
 
 @general_bp.route("/health", methods=['GET'])
@@ -18,5 +14,6 @@ def healthcheck():
 @general_bp.route("/", methods=["GET"])
 def catalogue():
     return Response(response=json.dumps({
-        "routes": routes
+        "routes": [{"url": request.url + "boundaries",
+                    "description": "Boundaries"}]
     }, separators=(',', ':')), mimetype='application/json', status=200)
