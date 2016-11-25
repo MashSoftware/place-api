@@ -51,9 +51,13 @@ class Boundary(object):
                            "geometry": geom}, separators=(',', ':'))
 
 
-class Constituency(db.Model, Boundary):
+class WestminsterConstituency(db.Model, Boundary):
     __tablename__ = "westminster_const_region"
 
 
 class County(db.Model, Boundary):
     __tablename__ = "county_region"
+
+
+class LondonAssemblyConstituency(db.Model, Boundary):
+    __tablename__ = "greater_london_const_region"

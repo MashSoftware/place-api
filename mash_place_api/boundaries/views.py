@@ -1,29 +1,27 @@
-from flask import Response, Blueprint
+from flask import Response, Blueprint, request
 from mash_place_api import cache
-from mash_place_api.models import Constituency, County
+from mash_place_api.models import WestminsterConstituency, County, LondonAssemblyConstituency
 import json
 
 boundaries_bp = Blueprint('boundaries', __name__)
-
-routes = [{"url": "/counties",
-           "methods": ["GET"],
-           "description": "Counties"},
-          {"url": "/constituencies",
-           "methods": ["GET"],
-           "description": "Westminster Constituencies"}]
 
 
 @boundaries_bp.route('/', methods=['GET'])
 def get_boundaries():
     return Response(json.dumps({
-        "routes": routes
+        "routes": [{"url": request.url + "counties",
+                   "description": "County"},
+                   {"url": request.url + "constituencies",
+                   "description": "Westminster Constituency"},
+                   {"url": request.url + "londonassembly",
+                   "description": "Greater London Authority Assembly Constituency"}]
     }, separators=(',', ':')), mimetype='application/json', status=200)
 
 
 @boundaries_bp.route('/constituencies', methods=['GET'])
 @cache.cached(timeout=86400)
 def get_constituencies():
-    constituencies = Constituency.query.order_by(Constituency.name).all()
+    constituencies = WestminsterConstituency.query.order_by(WestminsterConstituency.name).all()
     results = []
     for constituency in constituencies:
         item = constituency.get_keyval()
@@ -36,7 +34,7 @@ def get_constituencies():
 @boundaries_bp.route('/constituencies/<string:ons_code>', methods=['GET'])
 @cache.memoize(timeout=86400)
 def get_constituency(ons_code):
-    constituency = Constituency.query.get_or_404(ons_code)
+    constituency = WestminsterConstituency.query.get_or_404(ons_code)
     return Response(constituency.get_geojson(),
                     mimetype='application/json',
                     status=200)
@@ -60,5 +58,27 @@ def get_counties():
 def get_county(ons_code):
     county = County.query.get_or_404(ons_code)
     return Response(county.get_geojson(),
+                    mimetype='application/json',
+                    status=200)
+
+
+@boundaries_bp.route('/londonassembly', methods=['GET'])
+@cache.cached(timeout=86400)
+def get_londons():
+    londons = LondonAssemblyConstituency.query.order_by(LondonAssemblyConstituency.name).all()
+    results = []
+    for london in londons:
+        item = london.get_keyval()
+        results.append(item)
+    return Response(json.dumps(results, separators=(',', ':')),
+                    mimetype='application/json',
+                    status=200)
+
+
+@boundaries_bp.route('/londonassembly/<string:ons_code>', methods=['GET'])
+@cache.memoize(timeout=86400)
+def get_london(ons_code):
+    london = LondonAssemblyConstituency.query.get_or_404(ons_code)
+    return Response(london.get_geojson(),
                     mimetype='application/json',
                     status=200)
