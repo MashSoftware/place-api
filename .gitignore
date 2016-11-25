@@ -302,3 +302,5 @@ ENV/
 *.dbf
 *.prj
 *.shx
+*.sbn
+*.sbx
