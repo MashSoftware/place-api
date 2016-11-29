@@ -62,7 +62,7 @@ def get_county(ons_code):
                     status=200)
 
 
-@boundaries_bp.route('/londonassembly', methods=['GET'])
+@boundaries_bp.route('/londonassemblies', methods=['GET'])
 @cache.cached(timeout=86400)
 def get_londons():
     londons = LondonAssemblyConstituency.query.order_by(LondonAssemblyConstituency.name).all()
@@ -75,7 +75,7 @@ def get_londons():
                     status=200)
 
 
-@boundaries_bp.route('/londonassembly/<string:ons_code>', methods=['GET'])
+@boundaries_bp.route('/londonassemblies/<string:ons_code>', methods=['GET'])
 @cache.memoize(timeout=86400)
 def get_london(ons_code):
     london = LondonAssemblyConstituency.query.get_or_404(ons_code)
