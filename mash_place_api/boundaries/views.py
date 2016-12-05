@@ -13,7 +13,7 @@ def get_boundaries():
                    "description": "County"},
                    {"url": request.url + "constituencies",
                    "description": "Westminster Constituency"},
-                   {"url": request.url + "londonassembly",
+                   {"url": request.url + "londonassemblies",
                    "description": "Greater London Authority Assembly Constituency"}]
     }, separators=(',', ':')), mimetype='application/json', status=200)
 
