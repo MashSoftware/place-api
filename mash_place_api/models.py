@@ -28,14 +28,13 @@ class Boundary(object):
         super(Boundary, self).__init__()
 
     def get_keyval(self):
-        return {"ons_code": self.code,
+        return {"id": self.code,
                 "name": self.name}
 
     def get_properties(self):
         year = date.today().year
 
-        return {"ons_code": self.code,
-                "name": self.name,
+        return {"name": self.name,
                 "description": self.descriptio,
                 "type": self.descript0.title(),
                 "hectares": self.hectares,
@@ -45,6 +44,7 @@ class Boundary(object):
         geom = json.loads(db.session.scalar(geofunc.ST_AsGeoJSON(self.geom)))
 
         return json.dumps({"type": "Feature",
+                           "id": self.code,
                            "properties": self.get_properties(),
                            "crs": {"type": "name",
                                    "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}},
