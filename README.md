@@ -55,40 +55,40 @@ Go to [http://localhost:5000/](http://localhost:5000/)
 ```
 [
   {
-    ons_code: "W07000049",
-    name: "Aberavon Co Const"
+    "id": "W07000049",
+    "name": "Aberavon Co Const"
   },
   {
-    ons_code: "W07000058",
-    name: "Aberconwy Co Const"
+    "id": "W07000058",
+    "name": "Aberconwy Co Const"
   },
   {...},
   {...}
 ]
 ```
 
-`GET /boundaries/constituencies/<ons_code>` - Returns a specific Westminster Constituency as a GeoJSON feature:
+`GET /boundaries/constituencies/<id>` - Returns a specific Westminster Constituency as a GeoJSON feature:
 
 ```
 {
-  type: "Feature",
-  properties: {
-    ons_code: "E14000880",
-    name: "Plymouth, Sutton and Devonport Boro Const",
-    description: "Westminster Constituency",
-    type: "Civil Voting Area",
-    hectares: 2261.036,
-    attribution: "Contains OS data &copy; Crown copyright and database right (2016)"
+  "type": "Feature",
+  "id": "E14000880",
+  "properties": {
+    "name": "Plymouth, Sutton and Devonport Boro Const",
+    "description": "Westminster Constituency",
+    "type": "Civil Voting Area",
+    "hectares": 2261.036,
+    "attribution": "Contains OS data &copy; Crown copyright and database right (2017)"
   },
-  crs: {
-    type: "name",
-    properties: {
-      name: "urn:ogc:def:crs:OGC:1.3:CRS84"
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
     }
   },
-  geometry: {
-    type: "MultiPolygon",
-    coordinates: [
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
       [...],
       [...],
       [...]
