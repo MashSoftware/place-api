@@ -96,6 +96,8 @@ Go to [http://localhost:5000/](http://localhost:5000/)
   }
 }
 ```
+## What's available?
+Currently available boundary data is listed here: https://mash-place-api.herokuapp.com/boundaries/
 
 ## Mash Place UI
 There is an optional user interface available that consumes this API to help with discovering and visualising the data and also as an example of using web mapping tools: [https://github.com/MashSoftware/place-ui](https://github.com/MashSoftware/place-ui)
