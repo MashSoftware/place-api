@@ -1,10 +1,12 @@
 from flask import Response, Blueprint, request
+from mash_place_api import limiter
 import json
 
 general_bp = Blueprint('general', __name__)
 
 
 @general_bp.route("/health", methods=['GET'])
+@limiter.exempt
 def healthcheck():
     return Response(response=json.dumps({
         "status": "OK"

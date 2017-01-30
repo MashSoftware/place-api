@@ -19,6 +19,14 @@ def method_not_allowed(error):
                     status=405)
 
 
+@app.errorhandler(429)
+def too_many_requests(error):
+    return Response(response=json.dumps({"status_code": "429",
+                                         "message": "Too Many Requests"}, separators=(',', ':')),
+                    mimetype='application/json',
+                    status=429)
+
+
 @app.errorhandler(500)
 def internal_server_error(error):
     return Response(response=json.dumps({"status_code": "500",
