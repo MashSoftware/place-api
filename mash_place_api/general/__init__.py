@@ -19,6 +19,14 @@ def method_not_allowed(error):
                     status=405)
 
 
+@app.errorhandler(406)
+def not_acceptable(error):
+    return Response(response=json.dumps({"status_code": "406",
+                                         "message": "Not Accetpable"}, separators=(',', ':')),
+                    mimetype='application/json',
+                    status=406)
+
+
 @app.errorhandler(429)
 def too_many_requests(error):
     return Response(response=json.dumps({"status_code": "429",

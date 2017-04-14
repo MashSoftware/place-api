@@ -28,4 +28,4 @@ from mash_place_api.general import views as general_views
 app.register_blueprint(general_views.general_bp)
 
 from mash_place_api.boundaries import views as boundary_views
-app.register_blueprint(boundary_views.boundaries_bp, url_prefix='/boundaries')
+app.register_blueprint(boundary_views.boundaries_bp, url_prefix='/v1/boundaries')

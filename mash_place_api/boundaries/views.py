@@ -1,12 +1,14 @@
 from flask import Response, Blueprint, request
 from mash_place_api import cache
 from mash_place_api.models import WestminsterConstituency, County, LondonAssemblyConstituency
+from flask_negotiate import produces
 import json
 
 boundaries_bp = Blueprint('boundaries', __name__)
 
 
 @boundaries_bp.route('/', methods=['GET'])
+@produces('application/json')
 def get_boundaries():
     return Response(json.dumps({
         "routes": [{"url": request.url + "counties",
@@ -19,6 +21,7 @@ def get_boundaries():
 
 
 @boundaries_bp.route('/constituencies', methods=['GET'])
+@produces('application/json')
 @cache.cached(timeout=86400)
 def get_constituencies():
     constituencies = WestminsterConstituency.query.order_by(WestminsterConstituency.name).all()
@@ -32,6 +35,7 @@ def get_constituencies():
 
 
 @boundaries_bp.route('/constituencies/<string:ons_code>', methods=['GET'])
+@produces('application/json')
 @cache.memoize(timeout=86400)
 def get_constituency(ons_code):
     constituency = WestminsterConstituency.query.get_or_404(ons_code)
@@ -41,6 +45,7 @@ def get_constituency(ons_code):
 
 
 @boundaries_bp.route('/counties', methods=['GET'])
+@produces('application/json')
 @cache.cached(timeout=86400)
 def get_counties():
     counties = County.query.order_by(County.name).all()
@@ -54,6 +59,7 @@ def get_counties():
 
 
 @boundaries_bp.route('/counties/<string:ons_code>', methods=['GET'])
+@produces('application/json')
 @cache.memoize(timeout=86400)
 def get_county(ons_code):
     county = County.query.get_or_404(ons_code)
@@ -63,6 +69,7 @@ def get_county(ons_code):
 
 
 @boundaries_bp.route('/londonassemblies', methods=['GET'])
+@produces('application/json')
 @cache.cached(timeout=86400)
 def get_londons():
     londons = LondonAssemblyConstituency.query.order_by(LondonAssemblyConstituency.name).all()
@@ -76,6 +83,7 @@ def get_londons():
 
 
 @boundaries_bp.route('/londonassemblies/<string:ons_code>', methods=['GET'])
+@produces('application/json')
 @cache.memoize(timeout=86400)
 def get_london(ons_code):
     london = LondonAssemblyConstituency.query.get_or_404(ons_code)
