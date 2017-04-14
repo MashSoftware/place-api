@@ -48,54 +48,10 @@ python3 -m flask run --host=0.0.0.0
 ```
 Go to [http://localhost:5000/](http://localhost:5000/)
 
-## Usage
+## Specification
 
-`GET /boundaries/constituencies` - Returns a list of Westminster Constituencies:
+This API is defined using [OpenAPI Specification 2.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) compliant [`swagger.json`](swagger.json) code.
 
-```
-[
-  {
-    "id": "W07000049",
-    "name": "Aberavon Co Const"
-  },
-  {
-    "id": "W07000058",
-    "name": "Aberconwy Co Const"
-  },
-  {...},
-  {...}
-]
-```
-
-`GET /boundaries/constituencies/<id>` - Returns a specific Westminster Constituency as a GeoJSON feature:
-
-```
-{
-  "type": "Feature",
-  "id": "E14000880",
-  "properties": {
-    "name": "Plymouth, Sutton and Devonport Boro Const",
-    "description": "Westminster Constituency",
-    "type": "Civil Voting Area",
-    "hectares": 2261.036,
-    "attribution": "Contains OS data &copy; Crown copyright and database right (2017)"
-  },
-  "crs": {
-    "type": "name",
-    "properties": {
-      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-    }
-  },
-  "geometry": {
-    "type": "MultiPolygon",
-    "coordinates": [
-      [...],
-      [...],
-      [...]
-    ]
-  }
-}
-```
 ## What's available?
 Currently available boundary data is listed here: https://mash-place-api.herokuapp.com/boundaries/
 
