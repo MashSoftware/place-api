@@ -1,0 +1,23 @@
+{
+  "name": "place-api",
+  "scripts": {
+  },
+  "env": {
+    "BUILD_WITH_GEO_LIBRARIES": {
+      "required": true
+    },
+    "HEROKU_POSTGRESQL_ORANGE_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
