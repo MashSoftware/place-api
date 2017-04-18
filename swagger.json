@@ -20,7 +20,7 @@
               "title": "counties",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Boundary"
+                "$ref": "#/definitions/Item"
               }
             }
           },
@@ -126,6 +126,13 @@
             }
           }
         }
+      }
+    },
+    "Item": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"}
       }
     }
   }
