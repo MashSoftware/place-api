@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Mash Place API",
-    "description": "Provides RESTful API access to geographic resources in JSON/GeoJSON representation"
+    "description": "Provides RESTful API access to geographic resources in GeoJSON representation"
   },
   "host": "mash-place-api.herokuapp.com",
   "basePath": "/v1",
@@ -20,7 +20,7 @@
               "title": "counties",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/County"
+                "$ref": "#/definitions/Boundary"
               }
             }
           },
@@ -51,11 +51,11 @@
           "200": {
             "description": "County has been retrieved",
             "schema": {
-              "$ref": "#/definitions/County"
+              "$ref": "#/definitions/Boundary"
             }
           },
           "404": {
-            "description": "County not found"
+            "$ref": "#/responses/404"
           },
           "405": {
             "$ref": "#/responses/405"
@@ -71,6 +71,9 @@
     }
   },
   "responses": {
+    "404": {
+      "description": "Not found"
+    },
     "405": {
       "description": "Method not allowed"
     },
@@ -82,28 +85,48 @@
     }
   },
   "definitions": {
-    "County": {
+    "Boundary": {
       "type": "object",
       "properties": {
-        "first_name": {"type": "string"},
-        "last_name": {"type": "string"},
-        "email_address": {
-          "type": "string",
-          "format": "email"
+        "type": {"type": "string"},
+        "id": {"type": "string"},
+        "properties": {
+          "type": "object",
+          "properties": {
+            "name": {"type": "string"},
+            "description": {"type": "string"},
+            "type": {"type": "string"},
+            "hectares": {"type": "number"},
+            "attribution": {"type": "string"}
+          }
         },
-        "password": {"type": "string"},
-        "roles": {
-          "type": "array",
-          "minItems": 1,
-          "items": {"type": "string"},
-          "uniqueItems": true
+        "crs": {
+          "type": "object",
+          "properties": {
+            "type": {"type": "string"},
+            "properties": {
+              "type": "object",
+              "properties": {
+                "name": {"type": "string"}
+              }
+            }
+          }
         },
-        "activated_at": {"type": ["string", "null"]},
-        "login_at": {"type": ["string", "null"]},
-        "updated_at": {"type": ["string", "null"]},
-        "archived_at": {"type": ["string", "null"]}
-      },
-      "required": ["first_name", "last_name", "email_address", "password", "roles"]
+        "geometry": {
+          "type": "object",
+          "properties": {
+            "type": {"type": "string"},
+            "coordinates": {
+              "type": "array",
+              "minItems": 3,
+              "items": [
+                {"type": "number"},
+                {"type": "number"}
+              ]
+            }
+          }
+        }
+      }
     }
   }
 }
