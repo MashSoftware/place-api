@@ -8,7 +8,6 @@
   "host": "mash-place-api.herokuapp.com",
   "basePath": "/v1",
   "schemes": ["https"],
-  "consumes": ["application/json"],
   "produces": ["application/json"],
   "paths": {
     "/boundaries/counties": {
