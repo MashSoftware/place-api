@@ -5,6 +5,7 @@ install:
 - pip3 install -r requirements.txt
 script:
 - pip3 install -r requirements_test.txt
+- safety check
 - flake8 .
 notifications:
   slack:
